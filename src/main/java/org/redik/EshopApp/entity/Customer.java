@@ -34,9 +34,8 @@ private CustomerCard customerCard;
 
 public Customer() {}
 
-public Customer(int id, String firstName, String lastName, String email) {
+public Customer(String firstName, String lastName, String email) {
 	super();
-	this.id = id;
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.email = email;
@@ -87,7 +86,5 @@ public String toString() {
 	return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 			+ ", customerCard=" + customerCard + "]";
 }
-
-
 
 }

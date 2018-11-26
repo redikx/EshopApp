@@ -34,6 +34,10 @@ public class CustomerCard {
 		card_number = cardNumber;
 	}
 
+	public CustomerCard(String cardNumber) {
+		card_number = cardNumber;
+	}
+
 	public int getId() {
 		return id;
 	}

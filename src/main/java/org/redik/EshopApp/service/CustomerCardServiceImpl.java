@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.redik.EshopApp.dao.CustomerCardDAO;
+import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +18,9 @@ public class CustomerCardServiceImpl implements CustomerCardService{
 	@Autowired 
 	private CustomerCardDAO customerCardDAO;
 	
+	 @Autowired
+    private SessionFactory sessionFactory;
+
 	
 	@Override
 	@Transactional
@@ -40,4 +46,13 @@ public class CustomerCardServiceImpl implements CustomerCardService{
 	customerCardDAO.deleteCustomerCard(id);
 	}
 
+	@Override
+	@Transactional
+	public void saveCustomerWithCard(Customer theCustomer, CustomerCard theCustomerCard) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(theCustomerCard);
+		session.persist(theCustomer);
+	}
+
+	
 }
