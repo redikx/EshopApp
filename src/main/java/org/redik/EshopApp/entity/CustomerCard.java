@@ -1,10 +1,13 @@
 package org.redik.EshopApp.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -20,6 +23,9 @@ public class CustomerCard {
 	@Column(name = "card_number")
 	private String card_number;
 
+	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL,mappedBy="customerCard")
+	private Customer customer;
+	
 	public CustomerCard() {
 	}
 
