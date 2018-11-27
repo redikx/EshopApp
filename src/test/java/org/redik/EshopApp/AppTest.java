@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.redik.EshopApp.config.AppConfig;
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
+import org.redik.EshopApp.entity.Manufacturer;
+import org.redik.EshopApp.entity.Product;
 import org.redik.EshopApp.service.CustomerCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -46,7 +48,7 @@ public class AppTest
 		System.out.println(customerCard.toString());
 	}*/
 	
-	@Test
+	/*@Test
 	//@Rollback(value=false)
 	public void CreateNewCustomer() {
 		CustomerCard newCustomerCard = new CustomerCard("CUSTOM20");
@@ -54,8 +56,15 @@ public class AppTest
 		newCustomer.setCustomerCard(newCustomerCard);
 	logger.info(newCustomer.toString());	
 		customerCardService.saveCustomerWithCard(newCustomer, newCustomerCard);
+	}*/
+	
+	@Test
+	public void TestManufacturerProduct() {
+		Manufacturer manufacturer1 = new Manufacturer("Joytech", "China");
+		Product product1 = new Product("E-papieros","do palenia nie w piecu");
+		product1.setManufacturer(manufacturer1);
+		logger.info(product1.toString());
 	}
-		
 	
 
 }
