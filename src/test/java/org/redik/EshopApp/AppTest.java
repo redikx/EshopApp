@@ -52,7 +52,7 @@ public class AppTest
 		CustomerCard newCustomerCard = new CustomerCard("CUSTOM20");
 		Customer newCustomer = new Customer("John","Bregovitch","brego@gmail.com");
 		newCustomer.setCustomerCard(newCustomerCard);
-	System.out.println(newCustomer.toString());	
+	logger.info(newCustomer.toString());	
 		customerCardService.saveCustomerWithCard(newCustomer, newCustomerCard);
 	}
 		
