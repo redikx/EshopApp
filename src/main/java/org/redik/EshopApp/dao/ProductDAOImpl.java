@@ -8,46 +8,47 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.redik.EshopApp.entity.CustomerCard;
+import org.redik.EshopApp.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CustomerCardDAOImpl implements CustomerCardDAO{
+public class ProductDAOImpl implements ProductDAO{
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<CustomerCard> getAllCustomerCards() {
+	public List<Product> getAllProduct() {
 	Session session = sessionFactory.getCurrentSession();
-	TypedQuery<CustomerCard> thisQuery = session.createQuery("from CustomerCard order by id",CustomerCard.class);
-	List<CustomerCard> customerCards = thisQuery.getResultList();
-	return customerCards;
+	TypedQuery<Product> thisQuery = session.createQuery("from Product order by product_id",Product.class);
+	List<Product> products = thisQuery.getResultList();
+	return products;
 	
 	}
 
 	@Override
-	public CustomerCard getCustomerCard(int id) {
+	public Product getProduct(int id) {
 	Session session = sessionFactory.getCurrentSession();
-	CustomerCard customerCard = session.get(CustomerCard.class,id);
-	return customerCard;
+	Product product = session.get(Product.class,id);
+	return product;
 	}
 
 	@Override
 	@Transactional
-	public void saveCustomerCard(CustomerCard customerCard) {
+	public void saveProduct(Product product) {
 	Session session = sessionFactory.getCurrentSession();
-	session.saveOrUpdate(customerCard);
+	session.saveOrUpdate(product);
 	}
 
 	@Override
 	@Transactional
-	public void deleteCustomerCard(int id) {
+	public void deleteProduct(int id) {
 	Session session = sessionFactory.getCurrentSession();
-	Query theQuery = session.createQuery("delete from CustomerCard where id = :idToDelete");
+	Query theQuery = session.createQuery("delete from Product where product_id = :idToDelete");
 	theQuery.setParameter("idToDelete", id);
 	theQuery.executeUpdate();
 	}
+
 
 }
