@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerCardServiceImpl implements CustomerCardService{
+public class CustomerCardImpl implements CustomerCardService{
 
 	@Autowired 
 	private CustomerCardDAO customerCardDAO;
