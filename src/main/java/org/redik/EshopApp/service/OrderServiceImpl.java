@@ -3,16 +3,12 @@ package org.redik.EshopApp.service;
 import java.util.List;
 
 import javax.transaction.Transactional;
-
-import org.hibernate.SessionFactory;
 import org.redik.EshopApp.dao.OrderDAO;
 import org.redik.EshopApp.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderServiceImpl implements OrderService {
 
-	@Autowired
-	private SessionFactory sessionFactory;
 	
 	@Autowired
 	private OrderDAO orderDAO;

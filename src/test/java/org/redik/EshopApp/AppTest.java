@@ -81,7 +81,9 @@ public class AppTest
 		
 		Order order = new Order();
 		order.setCustomerId(newCustomer.getId());
-		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+		   
+		@SuppressWarnings("unused")
+		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		   Date date = new Date();  
 		order.setOrderDate(date);
 		order.setOrderNotes("zamowienie z nienacka");
