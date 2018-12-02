@@ -1,6 +1,5 @@
 package org.redik.EshopApp;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -16,6 +15,7 @@ import org.redik.EshopApp.entity.Product;
 import org.redik.EshopApp.service.CustomerCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -62,6 +62,7 @@ public class AppTest
 	}*/
 	
 	@Test
+	//@Rollback(false)
 	public void TestManufacturerProduct() {
 		Manufacturer manufacturer1 = new Manufacturer("Joytech", "China");
 		Product product1 = new Product("E-papieros","do palenia nie w piecu");
