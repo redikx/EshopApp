@@ -40,10 +40,13 @@ public class AppTest
 	
 	@Autowired
 	CustomerCardService customerCardService;
+	
 	@Autowired
 	ProductService productService;
+	
 	@Autowired
 	CustomerService customerService;
+	
 	@Autowired
 	OrderService orderService;
 	
