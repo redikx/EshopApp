@@ -10,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.redik.EshopApp.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class OrderDAOImpl implements OrderDAO {
 
 	@Autowired
@@ -20,7 +22,7 @@ public class OrderDAOImpl implements OrderDAO {
 	@Transactional
 	public List<Order> getAllOrder() {
 		Session session = sessionFactory.getCurrentSession();
-		TypedQuery<Order> thisQuery = session.createQuery("from Order order by id",Order.class);
+		TypedQuery<Order> thisQuery = session.createQuery("from Order order by order_id",Order.class);
 		List<Order> order = thisQuery.getResultList();
 		return order;
 	}
@@ -43,7 +45,7 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 	public void deleteOrder(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query thisQuery = session.createQuery("delete from Order where id = :toDelete");
+		Query thisQuery = session.createQuery("delete from Order where order_id = :toDelete");
 		session.setProperty("toDelete", id);
 		thisQuery.executeUpdate();
 	}

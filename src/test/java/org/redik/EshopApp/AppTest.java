@@ -3,16 +3,19 @@ package org.redik.EshopApp;
 import java.util.Date;
 import java.util.logging.Logger;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.redik.EshopApp.config.AppConfig;
 import org.redik.EshopApp.entity.Customer;
-import org.redik.EshopApp.entity.CustomerCard;
-import org.redik.EshopApp.entity.Manufacturer;
 import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
 import org.redik.EshopApp.entity.Product;
 import org.redik.EshopApp.service.CustomerCardService;
+import org.redik.EshopApp.service.CustomerService;
+import org.redik.EshopApp.service.OrderService;
+import org.redik.EshopApp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.annotation.Rollback;
@@ -32,80 +35,57 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class AppTest
 
 {
+	@Autowired
+	SessionFactory sessionFactory;
 	
 	@Autowired
 	CustomerCardService customerCardService;
-		
+	@Autowired
+	ProductService productService;
+	@Autowired
+	CustomerService customerService;
+	@Autowired
+	OrderService orderService;
+	
 	private Logger logger = Logger.getLogger(getClass().getName());
-	
-	/*@Test
-	public void SaveCardNumberTest() {
-	CustomerCard nn = new CustomerCard(199, "AAA");
-	customerCardService.saveCustomerCard(nn);
-	System.out.println(nn.toString());
-	}
+		
 	
 	@Test
-	public void ReadCardNumberTest() {
-		CustomerCard customerCard = customerCardService.getCustomerCard(4);
-		System.out.println(customerCard.toString());
-	}*/
-	
-	/*@Test
-	//@Rollback(value=false)
-	public void CreateNewCustomer() {
-		CustomerCard newCustomerCard = new CustomerCard("CUSTOM20");
-		Customer newCustomer = new Customer("John","Bregovitch","brego@gmail.com");
-		newCustomer.setCustomerCard(newCustomerCard);
-	logger.info(newCustomer.toString());	
-		customerCardService.saveCustomerWithCard(newCustomer, newCustomerCard);
-	}*/
-	
-	@Test
+	@Transactional
 	//@Rollback(false)
-	public void TestManufacturerProduct() {
-		Manufacturer manufacturer1 = new Manufacturer("Joytech", "China");
-		Product product1 = new Product("E-papieros","do palenia nie w piecu");
-		product1.setManufacturer(manufacturer1);
-		logger.info(product1.toString());
-
-		Product product2 = new Product("Akumulator","wysokopradowy");
-		product2.setManufacturer(manufacturer1);
-		logger.info(product2.toString());
-
+	public void TestNewOrderCreation() {
+	
+		Session session = sessionFactory.getCurrentSession();
 		
-		CustomerCard newCustomerCard = new CustomerCard("CUSTOM20");
-		Customer newCustomer = new Customer("John","Bregovitch","brego@gmail.com");
-		newCustomer.setCustomerCard(newCustomerCard);
-		customerCardService.saveCustomerWithCard(newCustomer, newCustomerCard);
-		logger.info(newCustomer.toString());
+		Product product1 = productService.getProduct(6);
+		Product product2 = productService.getProduct(13);
+		Customer newCustomer = customerService.getCustomer(11);
+		Date date = new Date(); 
 		
-		Order order = new Order();
-		order.setCustomerId(newCustomer.getId());
-		   
-		@SuppressWarnings("unused")
-		//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		   Date date = new Date();  
+		//Create Order with proper Date, Notes and CustomerId
+		Order order = new Order(date);
 		order.setOrderDate(date);
 		order.setOrderNotes("zamowienie z nienacka");
-		logger.info(order.toString());
+		order.setCustomerId(newCustomer.getId());
 		
+		//Create Order_Products for Order
 		Order_products op = new Order_products();
-		op.setOrder(order);
 		op.setProduct(product1);
-		op.setQuantity(2);
-
-		Order_products op2 = new Order_products();
-		op2.setOrder(order);
-		op2.setProduct(product2);
-		op2.setQuantity(8);
+		op.setQuantity(99);
 		
-		logger.info(op.toString());
-		logger.info(op2.toString());
-	
-	}
-	
-	
+		Order_products op2 = new Order_products();
+		op2.setProduct(product2);
+		op2.setQuantity(2);
+		
+		//Make proper constraint
+		order.addProduct(op);
+		order.addProduct(op2);
+
+		session.persist(order);
+		session.persist(op);
+		session.persist(op2);
+		session.persist(order);
+			}
 	
 
 }

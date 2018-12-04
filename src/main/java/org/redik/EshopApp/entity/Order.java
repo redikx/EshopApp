@@ -1,20 +1,20 @@
 package org.redik.EshopApp.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 
 @Id
@@ -31,19 +31,20 @@ private String orderNotes;
 @Column(name="customer_id")
 private int customerId;
 
-@OneToMany(cascade=CascadeType.ALL)
-@JoinColumn(name="order_id", referencedColumnName="order_id")
-private List<Order_products> orderProducts;
+@OneToMany(mappedBy="order")
+private List<Order_products> orderProducts = new ArrayList<>();
+//private Set<Order_products> orderProducts = new HashSet<Order_products>();
 
 public Order() {}
 
-public Order(int orderId, Date orderDate, String orderNotes, int customerId, List<Order_products> orderProducts) {
+public Order(Date orderDate) {
 	super();
-	this.orderId = orderId;
 	this.orderDate = orderDate;
-	this.orderNotes = orderNotes;
-	this.customerId = customerId;
-	this.orderProducts = orderProducts;
+}
+
+public void addProduct(Order_products op) {
+	orderProducts.add(op);
+	op.setOrder(this);
 }
 
 public int getOrderId() {
@@ -82,17 +83,23 @@ public List<Order_products> getOrderProducts() {
 	return orderProducts;
 }
 
+
 public void setOrderProducts(List<Order_products> orderProducts) {
 	this.orderProducts = orderProducts;
+	System.out.println(orderProducts.toString());;
+	
 }
 
 @Override
 public String toString() {
 	return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderNotes=" + orderNotes + ", customerId="
-			+ customerId + ", orderProducts=" + orderProducts + "]";
+			+ customerId + ", orderProducts=" + orderProducts.size() + "]";
+}
+
+
 }
 
 
 
-}
+
 
