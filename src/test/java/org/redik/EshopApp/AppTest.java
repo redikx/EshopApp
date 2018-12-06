@@ -1,8 +1,6 @@
 package org.redik.EshopApp;
 
 import java.util.Date;
-import java.util.logging.Logger;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -18,7 +16,6 @@ import org.redik.EshopApp.service.OrderService;
 import org.redik.EshopApp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -49,9 +46,6 @@ public class AppTest
 	
 	@Autowired
 	OrderService orderService;
-	
-	private Logger logger = Logger.getLogger(getClass().getName());
-		
 	
 	@Test
 	@Transactional

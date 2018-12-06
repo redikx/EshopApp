@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.SessionFactory;
 import org.redik.EshopApp.dao.ManufacturerDAO;
 import org.redik.EshopApp.entity.Manufacturer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +15,7 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 	@Autowired 
 	private ManufacturerDAO manufacturerDAO;
 	
-	 @Autowired
-    private SessionFactory sessionFactory;
-
-	
-	@Override
+	 @Override
 	@Transactional
 	public List<Manufacturer> getAllManufacturer() {
 		return manufacturerDAO.getAllManufacturer();
