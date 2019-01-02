@@ -58,10 +58,9 @@ public class AppTest
 		Product product2 = productService.getProduct(13);
 		Customer newCustomer = customerService.getCustomer(11);
 		Date date = new Date(); 
-		
+	
 		//Create Order with proper Date, Notes and CustomerId
 		Order order = new Order(date);
-		order.setOrderDate(date);
 		order.setOrderNotes("zamowienie z nienacka");
 		order.setCustomerId(newCustomer.getId());
 		
