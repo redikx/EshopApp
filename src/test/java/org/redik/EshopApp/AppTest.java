@@ -16,6 +16,7 @@ import org.redik.EshopApp.service.OrderService;
 import org.redik.EshopApp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -61,7 +62,7 @@ public class AppTest
 	
 		//Create Order with proper Date, Notes and CustomerId
 		Order order = new Order(date);
-		order.setOrderNotes("zamowienie z nienacka");
+		order.setOrderNotes("zamowienie stary sposob");
 		order.setCustomerId(newCustomer.getId());
 		
 		//Create Order_Products for Order
@@ -83,5 +84,41 @@ public class AppTest
 		session.persist(order);
 			}
 	
+	@Test
+	@Transactional
+	//@Rollback(false)
+	public void TestNewOrderCreationUsingOrderService() {
+	
+		Product product1 = productService.getProduct(6);
+		Product product2 = productService.getProduct(13);
+		Customer newCustomer = customerService.getCustomer(11);
+		Date date = new Date(); 
+	
+		//Create Order with proper Date, Notes and CustomerId
+		Order order = new Order(date);
+		order.setOrderNotes("zamowienie using OrderService");
+		order.setCustomerId(newCustomer.getId());
+		
+		//Create Order_Products for Order
+		Order_products op = new Order_products();
+		op.setProduct(product1);
+		op.setQuantity(99);
+		
+		Order_products op2 = new Order_products();
+		op2.setProduct(product2);
+		op2.setQuantity(2);
+		
+		orderService.addProductToOrder(order, op);
+		orderService.addProductToOrder(order, op2);
 
+			}
+
+	@Test
+	@Transactional
+	//@Rollback(false)
+	public void deleteAllOrderEntries() {
+		orderService.deleteWholeOrder(17);
+	}
+	
+	
 }

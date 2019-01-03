@@ -45,9 +45,20 @@ public class Order_productsDAOImpl implements Order_productsDAO {
 	@Override
 	public void deleteOrder_products(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query thisQuery = session.createQuery("delete from Order_products where id = :toDelete");
-		session.setProperty("toDelete", id);
+		Query thisQuery = session.createQuery("delete Order_products where id = :toDelete");
+		thisQuery.setParameter("toDelete", id);
 		thisQuery.executeUpdate();
 	}
+
+	@Override
+	public void deleteOrder_allProducts(int id) {
+		System.out.println("Deleting Whole order including products");
+		Session session = sessionFactory.getCurrentSession();
+		Query thisQuery = session.createQuery("delete Order_products where order_id = :toDelete");
+		thisQuery.setParameter("toDelete", id);
+		thisQuery.executeUpdate();
+	}
+	
+	
 
 }

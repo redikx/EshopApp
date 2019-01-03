@@ -7,8 +7,10 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.redik.EshopApp.dao.OrderDAO;
+import org.redik.EshopApp.dao.Order_productsDAO;
 import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
+import org.redik.EshopApp.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderDAO orderDAO;
 
+	@Autowired
+	private Order_productsDAO order_productsDAO;
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
@@ -42,10 +47,16 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	@Transactional
+	public void deleteWholeOrder(int id) {
+		order_productsDAO.deleteOrder_allProducts(id);
+		orderDAO.deleteOrder(id);
+	}
+	
+	@Override
 	public void deleteOrder(int id) {
 		orderDAO.deleteOrder(id);
 	}
-
+	
 	@Override
 	@Transactional
 	public void saverOrderProducts(Order order, Order_products oproducts) {
@@ -59,6 +70,17 @@ public class OrderServiceImpl implements OrderService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void addProductToOrder(Order order, Order_products oproduct) {
+		oproduct.setOrder(order);
+		order.addProduct(oproduct);
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(order);
+		session.persist(oproduct);
+	}
+
+
 	
 	
 }

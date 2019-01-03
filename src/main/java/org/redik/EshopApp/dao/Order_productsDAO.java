@@ -16,4 +16,6 @@ public interface Order_productsDAO {
 	
 	public void deleteOrder_products(int id);
 	
+	public void deleteOrder_allProducts(int id);
+	
 }
