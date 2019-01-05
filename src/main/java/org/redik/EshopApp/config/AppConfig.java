@@ -2,6 +2,7 @@ package org.redik.EshopApp.config;
 
 import java.beans.PropertyVetoException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import javax.sql.DataSource;
@@ -13,11 +14,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.CacheControl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -32,7 +37,6 @@ public class AppConfig implements WebMvcConfigurer {
 	@Autowired
 	private Environment env;
 
-	
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	// Define DataSource Bean
@@ -97,6 +101,24 @@ public class AppConfig implements WebMvcConfigurer {
 		// txManager.setSessionFactory(sessionFactory);
 		txManager.setSessionFactory(sessionFactory().getObject());
 		return txManager;
+	}
+
+	@Bean
+	public ViewResolver viewResolver() {
+		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+
+		viewResolver.setPrefix("/WEB-INF/view/");
+		viewResolver.setSuffix(".jsp");
+
+		return viewResolver;
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+		// Register resource handler for CSS and JS
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/")
+				.setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
 	}
 
 }
