@@ -8,7 +8,10 @@
 </head>
 <body>
 
-Main page of EshopApp
+
+<h2> Main page of EshopApp : </h2>
+
+<input type="button" onclick="window.location.href='http://localhost:8080/EshopApp/api/allCustomers'" value="RestApi AllCustomers">
 
 </body>
 </html>
