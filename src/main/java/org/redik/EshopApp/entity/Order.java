@@ -3,8 +3,10 @@ package org.redik.EshopApp.entity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +31,7 @@ private String orderNotes;
 @Column(name="customer_id")
 private int customerId;
 
-@OneToMany(mappedBy="order")
+@OneToMany(mappedBy="order",fetch = FetchType.EAGER)
 private List<Order_products> orderProducts = new ArrayList<>();
 //private Set<Order_products> orderProducts = new HashSet<Order_products>();
 

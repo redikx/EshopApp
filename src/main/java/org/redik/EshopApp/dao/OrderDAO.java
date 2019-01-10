@@ -2,6 +2,7 @@ package org.redik.EshopApp.dao;
 
 import java.util.List;
 
+import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.Order;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,7 @@ public interface OrderDAO {
 	public void saveOrder(Order order);
 	
 	public void deleteOrder(int id);
+	
+	public List<Order> getOrderOfCustomer(int customerId);
 	
 }

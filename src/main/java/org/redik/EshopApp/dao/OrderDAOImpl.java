@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,6 +28,17 @@ public class OrderDAOImpl implements OrderDAO {
 		return order;
 	}
 
+	@Override
+	@Transactional
+	public List<Order> getOrderOfCustomer(int customerId) {
+		Session session = sessionFactory.getCurrentSession();
+		TypedQuery<Order> thisQuery = session.createQuery("from Order where customer_id = :customerId",Order.class);
+		thisQuery.setParameter("customerId", customerId);
+		List<Order> OrderList = thisQuery.getResultList();
+		return OrderList;
+	}
+	
+	
 	@Override
 	@Transactional
 	public Order getOrder(int id) {
@@ -49,5 +61,6 @@ public class OrderDAOImpl implements OrderDAO {
 		thisQuery.setParameter("toDelete", id);
 		thisQuery.executeUpdate();
 	}
+
 
 }

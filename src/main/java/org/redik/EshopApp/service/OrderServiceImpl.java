@@ -35,6 +35,12 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	@Transactional
+	public List<Order> getAllOrderOfCustomer(int customerId) {
+		return orderDAO.getOrderOfCustomer(customerId);
+	}
+
+	@Override
+	@Transactional
 	public Order getOrder(int id) {
 		return orderDAO.getOrder(id);
 	}
@@ -79,8 +85,5 @@ public class OrderServiceImpl implements OrderService {
 		session.persist(order);
 		session.persist(oproduct);
 	}
-
-
-	
 	
 }

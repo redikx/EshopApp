@@ -9,6 +9,8 @@ import org.redik.EshopApp.entity.Product;
 public interface OrderService {
 
 	public List<Order> getAllOrder();
+	
+	public List<Order> getAllOrderOfCustomer(int customerId);
 
 	public Order getOrder(int id);
 
