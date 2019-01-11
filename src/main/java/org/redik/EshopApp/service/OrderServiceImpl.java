@@ -10,9 +10,9 @@ import org.redik.EshopApp.dao.OrderDAO;
 import org.redik.EshopApp.dao.Order_productsDAO;
 import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
-import org.redik.EshopApp.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -36,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	public List<Order> getAllOrderOfCustomer(int customerId) {
+		Session session = sessionFactory.getCurrentSession();
 		return orderDAO.getOrderOfCustomer(customerId);
 	}
 

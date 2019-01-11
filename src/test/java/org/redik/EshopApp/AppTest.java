@@ -86,7 +86,7 @@ public class AppTest
 	
 	@Test
 	@Transactional
-	//@Rollback(false)
+	@Rollback(false)
 	public void TestNewOrderCreationUsingOrderService() {
 	
 		Product product1 = productService.getProduct(6);
@@ -96,17 +96,17 @@ public class AppTest
 	
 		//Create Order with proper Date, Notes and CustomerId
 		Order order = new Order(date);
-		order.setOrderNotes("zamowienie using OrderService");
+		order.setOrderNotes("zamowienie drugie");
 		order.setCustomerId(newCustomer.getId());
 		
 		//Create Order_Products for Order
 		Order_products op = new Order_products();
 		op.setProduct(product1);
-		op.setQuantity(99);
+		op.setQuantity(1000);
 		
 		Order_products op2 = new Order_products();
 		op2.setProduct(product2);
-		op2.setQuantity(2);
+		op2.setQuantity(1000);
 		
 		orderService.addProductToOrder(order, op);
 		orderService.addProductToOrder(order, op2);

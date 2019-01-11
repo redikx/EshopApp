@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ private String manName;
 @Column(name="country")
 private String manCountry;
 
-@OneToMany(cascade=CascadeType.ALL)
+@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 @JoinColumn(name="manufacturer_id", referencedColumnName="manufacturer_id")
 private List<Product> products;
 

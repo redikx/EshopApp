@@ -13,6 +13,8 @@ import org.redik.EshopApp.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.sun.media.jfxmedia.logging.Logger;
+
 @Repository
 public class OrderDAOImpl implements OrderDAO {
 
@@ -35,6 +37,7 @@ public class OrderDAOImpl implements OrderDAO {
 		TypedQuery<Order> thisQuery = session.createQuery("from Order where customer_id = :customerId",Order.class);
 		thisQuery.setParameter("customerId", customerId);
 		List<Order> OrderList = thisQuery.getResultList();
+		System.out.println("NUMBER OF ORDERS: " + OrderList.size());
 		return OrderList;
 	}
 	

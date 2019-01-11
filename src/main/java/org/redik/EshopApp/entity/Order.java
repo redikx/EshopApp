@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ private String orderNotes;
 @Column(name="customer_id")
 private int customerId;
 
-@OneToMany(mappedBy="order",fetch = FetchType.EAGER)
+@OneToMany(mappedBy="order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 private List<Order_products> orderProducts = new ArrayList<>();
 //private Set<Order_products> orderProducts = new HashSet<Order_products>();
 
@@ -93,7 +94,7 @@ public void setOrderProducts(List<Order_products> orderProducts) {
 @Override
 public String toString() {
 	return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderNotes=" + orderNotes + ", customerId="
-			+ customerId + ", orderProducts=" + orderProducts.size() + "]";
+			+ customerId + ", orderProducts=" + orderProducts.size() + "] \n";
 }
 
 

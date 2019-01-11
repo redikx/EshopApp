@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 @RestController
 @RequestMapping("/api")
 public class RestCustomers {
@@ -33,9 +36,13 @@ public class RestCustomers {
 	}
 	
 	@GetMapping("/getCustomerOrders")
-	public List<Order> getCustomerOrder(@RequestParam("customerId") int customerId) {
-		return
-				orderService.getAllOrderOfCustomer(customerId);
+	public String getCustomerOrder(@RequestParam("customerId") int customerId) {
+		List<Order> listOrders = orderService.getAllOrderOfCustomer(customerId);
+		String str1 = "";
+		for (Order order : listOrders) {
+			str1 = str1 + order.toString() + "\r\n";
+		}
+		return str1;
 	}
 	
 }
