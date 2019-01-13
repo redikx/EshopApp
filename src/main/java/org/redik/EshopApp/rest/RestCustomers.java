@@ -1,5 +1,6 @@
 package org.redik.EshopApp.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.redik.EshopApp.entity.Customer;
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 @RestController
 @RequestMapping("/api")
@@ -37,12 +39,19 @@ public class RestCustomers {
 	
 	@GetMapping("/getCustomerOrders")
 	public String getCustomerOrder(@RequestParam("customerId") int customerId) {
-		List<Order> listOrders = orderService.getAllOrderOfCustomer(customerId);
-		String str1 = "";
-		for (Order order : listOrders) {
-			str1 = str1 + order.toString() + "\r\n";
+		ArrayList<Order> listOrders = (ArrayList<Order>) orderService.getAllOrderOfCustomer(customerId);
+		//String lo = "Number of orders : " + listOrders.size();
+		//String lo = new Gson().toJson(listOrders); 
+		ArrayList<String> al = new ArrayList<>();
+		//al.add(lo);
+		for (Order orders: listOrders) {
+			al.add(orders.toString());
 		}
-		return str1;
+		
+		String json =new Gson().toJson(al);
+		return json;
+		}
+	
 	}
 	
-}
+

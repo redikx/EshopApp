@@ -37,7 +37,6 @@ public class OrderDAOImpl implements OrderDAO {
 		TypedQuery<Order> thisQuery = session.createQuery("from Order where customer_id = :customerId",Order.class);
 		thisQuery.setParameter("customerId", customerId);
 		List<Order> OrderList = thisQuery.getResultList();
-		System.out.println("NUMBER OF ORDERS: " + OrderList.size());
 		return OrderList;
 	}
 	
