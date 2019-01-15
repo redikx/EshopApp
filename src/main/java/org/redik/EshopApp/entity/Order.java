@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="orders")
 public class Order {
@@ -33,6 +35,7 @@ private String orderNotes;
 private int customerId;
 
 @OneToMany(mappedBy="order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+@JsonBackReference
 private List<Order_products> orderProducts = new ArrayList<>();
 //private Set<Order_products> orderProducts = new HashSet<Order_products>();
 
@@ -93,9 +96,10 @@ public void setOrderProducts(List<Order_products> orderProducts) {
 
 @Override
 public String toString() {
-	return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderNotes=" + orderNotes + ", customerId="
-			+ customerId + ", orderProducts=" + orderProducts.size() + "] \n";
+	return "{orderId:" + orderId + ", orderDate:" + orderDate + ", orderNotes:" + orderNotes + ", customerId:"
+			+ customerId + ", orderProducts:" + orderProducts.size() + "}";
 }
+
 
 
 }

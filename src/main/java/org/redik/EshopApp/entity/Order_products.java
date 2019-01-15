@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="order_products")
@@ -26,6 +28,7 @@ private int id;
 @JoinColumn(name="product_id", foreignKey=@ForeignKey(name="FK_order_products_product"))
 private Product product;
 
+@JsonManagedReference
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name="order_id")
 private Order order;
