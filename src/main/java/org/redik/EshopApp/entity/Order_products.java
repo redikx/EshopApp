@@ -28,7 +28,7 @@ private int id;
 @JoinColumn(name="product_id", foreignKey=@ForeignKey(name="FK_order_products_product"))
 private Product product;
 
-@JsonManagedReference
+//@JsonManagedReference
 @ManyToOne(fetch = FetchType.LAZY)
 @JoinColumn(name="order_id")
 private Order order;
