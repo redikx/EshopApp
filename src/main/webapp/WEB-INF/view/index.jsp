@@ -8,7 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Main Page</title>
-<link type="text/css" href="/resources/style.css' />"  rel="stylesheet" />
+<link type="text/css" href="<c:url value='/resources/css/style.css' />" rel="stylesheet" />
+
 </head>
 <body>
 
