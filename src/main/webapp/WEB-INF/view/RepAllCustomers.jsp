@@ -23,11 +23,11 @@
 	<c:forEach var="tempCust" items="${listCustomers}">
 	
 	<tr>
-	<td> "${tempCust.id }" </td>
-	<td> "${tempCust.firstName }" </td>
-	<td> "${tempCust.lastName }" </td>
-	<td> "${tempCust.email }" </td>
-	<td>  ${tempCust.customerCard.getCardNumber()}  </td>
+	<td> ${tempCust.id } </td>
+	<td> ${tempCust.firstName } </td>
+	<td> ${tempCust.lastName } </td>
+	<td> ${tempCust.email } </td>
+	<td> ${tempCust.customerCard.getCardNumber() } </td>
 	</tr>
 	</c:forEach>
 </table>
