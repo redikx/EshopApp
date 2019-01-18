@@ -27,7 +27,7 @@
 	<td> "${tempCust.firstName }" </td>
 	<td> "${tempCust.lastName }" </td>
 	<td> "${tempCust.email }" </td>
-	<td> "${tempCust.customerCard }" </td>
+	<td>  ${tempCust.customerCard.getCardNumber()}  </td>
 	</tr>
 	</c:forEach>
 </table>
