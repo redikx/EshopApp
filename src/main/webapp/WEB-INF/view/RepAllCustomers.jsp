@@ -19,8 +19,18 @@
 	<th> Last Name </th>
 	<th> Email </th>
 	<th> Customer_card </th>
+	<th></th>
+	<th></th>
+	
 	</tr>
 	<c:forEach var="tempCust" items="${listCustomers}">
+	
+	<c:url value="formForUpdateCustomer" var="UpdateCustomerLink" >
+		<c:param name="customerId" value="${tempCust.id}"></c:param>
+	</c:url>
+	<c:url value="formForDisplayCustomerDetails" var="detailsCustomerLink">
+		<c:param name="customerId" value="${tempCust.id}"></c:param>
+	</c:url>
 	
 	<tr>
 	<td> ${tempCust.id } </td>
@@ -28,6 +38,8 @@
 	<td> ${tempCust.lastName } </td>
 	<td> ${tempCust.email } </td>
 	<td> ${tempCust.customerCard.getCardNumber() } </td>
+	<td> <a href="${UpdateCustomerLink}">Update</a>
+	<td> <a href="${detailsCustomerLink}">Details</a>
 	</tr>
 	</c:forEach>
 </table>
