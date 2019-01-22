@@ -8,11 +8,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Main Page</title>
-<link type="text/css" href="<c:url value='/resources/css/style.css' />" rel="stylesheet" />
+<link type="text/css" href="<c:url value='/resources/css/style_details.css' />" rel="stylesheet" />
 </head>
 <body>
 
-<table>
+<table style='border-bottom-color: White; text-decoration: blink; font-family: "Trebuchet MS", Sans-Serif; color: Crimson'>
 	<tr>
 	<th> CustomerId </th>
 	<th> First Name </th>
@@ -22,7 +22,7 @@
 	<th></th>
 	<th></th>
 	</tr>
-	<tr>
+	<tr style="font-style: oblique">
 	<td> ${customer.id } </td>
 	<td> ${customer.firstName } </td>
 	<td> ${customer.lastName } </td>
@@ -30,26 +30,28 @@
 	<td> ${customer.customerCard.getCardNumber() } </td>
 	</tr>
 </table>
-
-	<table>
+<p></p>
+	<table style="font-style: normal; font-size: small;;" bgcolor="#F5F5F5" background="#F5F5F5">
+	
+	<c:forEach var="orders" items="${listCustomerOrders}">
 	<tr>
-	<th> Order Id </th>
+	<th background="#FF7F50"> Order Id </th>
 	<th>   Order Date   </th>
 	<th>        Order Notes         </th>
 	<th></th>
 	<th></th>
 	</tr>
-	<c:forEach var="orders" items="${listCustomerOrders}">
 	<tr>
 	<td> ${orders.getOrderId() } </td>
 	<td> ${orders.getOrderDate() } </td>
 <td> ${orders.getOrderNotes()} </td>
-			<c:forEach var="products" items="${orders.getOrderProducts()}" >
 			<tr>
 			<th> Product Name </th>
 			<th> Quantity </th>
 			</tr>
-			<tr>
+			<c:forEach var="products" items="${orders.getOrderProducts()}" >
+			
+			<tr 	>
 			<td>
 		${products.getProduct().getProductName()}
 			</td>
