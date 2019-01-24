@@ -37,6 +37,10 @@ public class reportsControllers {
 		return "RepAllCustomers";
 	}
 	
+	@GetMapping("/allOrders") 
+	public String RepAllOrders( Model model) {
+		return "RepAllOrders";
+	}
 	
 	@RequestMapping("/formForUpdateCustomer")
 	public String updateCustomer(@RequestParam("customerId") int id, Model model) {
@@ -52,7 +56,9 @@ public class reportsControllers {
 	public String saveCustomer(@ModelAttribute("customer") Customer customer,Model model) {
 	System.out.println(customer.toString());
 	customerService.saveCustomerWithCard(customer);
-	return "customer-details-form";
+	List<Customer> lcust = customerService.getAllCustomer();
+	model.addAttribute("listCustomers", lcust);
+	return "RepAllCustomers";
 	}
 	
 	@GetMapping("/formForDisplayCustomerDetails")

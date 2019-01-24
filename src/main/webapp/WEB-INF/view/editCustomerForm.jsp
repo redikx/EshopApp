@@ -19,26 +19,26 @@
 	</tr>
 
 	<tr>
-	<td></td>
+	<td>First Name </td>
 	<td><form:input path="firstName"/> </td>
 	</tr>
 
 	<tr>
-	<td></td>
+	<td>Last Name </td>
 	<td><form:input path="lastName"/> </td>
 	</tr>
 
 	<tr>
-	<td></td>
-	<td><form:input path="email"/> </td>
+	<td>Email</td>
+	<td> <form:input path="email"/> </td>
 	</tr>
 
 	<tr>
 	<td></td>
-	<td><form:input path="customerCard.id" value="${model.customerCard.card}"/> </td>
+	<td><form:hidden path="customerCard.id" value="${model.customerCard.card}"/> </td>
 	</tr>
 	<tr>
-	<td></td>
+	<td>Card Number</td>
 	<td><form:input path="customerCard.card_number" value="${model.customerCard.card_number}"/> </td>
 	</tr>
 	  <tr>   

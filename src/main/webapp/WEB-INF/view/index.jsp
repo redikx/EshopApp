@@ -20,15 +20,11 @@
 <th><input type="button" onclick="window.location.href='http://localhost:8080/EshopApp/api/getCustomer?customerId=11'" value="RestApi getCustomer?customerId=11" style="width: 350px; "></th>
 <th><input type="button" onclick="window.location.href='http://localhost:8080/EshopApp/api/getCustomerOrders?customerId=11'" value="RestApi getCustomersOrder?customerId=11" style="width: 350px; "></th>
 </tr>
-<tr>
-<th><input type="button" onclick="window.location.href='http://localhost:8080/EshopApp/allCustomers'" value="MVC all Customer Report" ></th>
-</tr>
 </table>
 
 <table>
 <form method="get" action="api/getCustomerOrders">
 
-    	<h3>Get List of Customer orders</h3>
     	<tr>
             <td><label for="customerId" >Customer ID : </label></td>
             <td><input type="text" id="customerId" name="customerId"/><br/></td>
@@ -39,6 +35,16 @@
         </tr>
     </table>
 
+<table>
+<tr>
+<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allCustomers'" value="Customer List" ></th>
+<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allOrders'" value="Orders List" > </th>
+<th></th>
+<th></th>
+</tr>
+
+
+</table>
 </form>
 
 
