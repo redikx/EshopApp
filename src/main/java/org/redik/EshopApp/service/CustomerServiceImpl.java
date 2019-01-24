@@ -27,7 +27,6 @@ public class CustomerServiceImpl implements CustomerService{
 	
 	@Override
 	@Transactional
-	@JsonIgnore
 	public List<Customer> getAllCustomer() {
 	return customerDAO.getAllCustomer();
 	}

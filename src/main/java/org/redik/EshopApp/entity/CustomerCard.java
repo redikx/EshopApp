@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="customer_card")
@@ -24,6 +26,7 @@ public class CustomerCard {
 	private String card_number;
 
 	@OneToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL,mappedBy="customerCard")
+	@JsonIgnore
 	private Customer customer;
 	
 	public CustomerCard() {

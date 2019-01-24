@@ -33,7 +33,6 @@ public class reportsControllers {
 	
 	
 	@GetMapping("/allCustomers") 
-	@JsonIgnore
 	public String RepAllCustomers( Model model) {
 		List<Customer> lcust = customerService.getAllCustomer();
 		model.addAttribute("listCustomers", lcust);

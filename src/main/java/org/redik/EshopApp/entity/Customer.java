@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="customer")
 public class Customer {
@@ -29,6 +31,7 @@ private String lastName;
 private String email;
 
 @OneToOne(fetch=FetchType.EAGER)
+@JsonIgnore
 @JoinColumn(name="card_id")
 private CustomerCard customerCard;
 
