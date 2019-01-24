@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Controller
 public class reportsControllers {
 
@@ -31,6 +33,7 @@ public class reportsControllers {
 	
 	
 	@GetMapping("/allCustomers") 
+	@JsonIgnore
 	public String RepAllCustomers( Model model) {
 		List<Customer> lcust = customerService.getAllCustomer();
 		model.addAttribute("listCustomers", lcust);

@@ -9,9 +9,10 @@ import javax.transaction.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.redik.EshopApp.entity.Customer;
-import org.redik.EshopApp.entity.CustomerCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
@@ -21,6 +22,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	@Override
 	@Transactional
+	@JsonIgnore
 	public List<Customer> getAllCustomer() {
 		Session session = sessionFactory.getCurrentSession();
 		TypedQuery<Customer> thisQuery = session.createQuery("from Customer order by id",Customer.class);
