@@ -43,3 +43,4 @@
 	</tr>
 	</c:forEach>
 </table>
+<button type="button" name="back" onclick="location='${pageContext.request.contextPath}'" style="float: left;">Main Page</button>

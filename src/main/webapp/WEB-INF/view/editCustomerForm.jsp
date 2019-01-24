@@ -10,8 +10,7 @@
 <link type="text/css" href="<c:url value='/resources/css/style.css' />" rel="stylesheet" />
 </head>
 
-<form:form method="POST" action="formForSaveCustomer"
-modelAttribute="customer">
+<form:form method="POST" action="formForSaveCustomer" modelAttribute="customer">
 	<table>
 	
 	<tr>

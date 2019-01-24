@@ -59,10 +59,9 @@
 			${products.getQuantity()}
 			</td>
 			</tr>
-			
 			</c:forEach>
-	
-	</tr>
-	
 	</c:forEach>
 	</table>
+	
+	<button type="button" name="back" onclick="history.back()">back</button>
+	<button type="button" name="back" onclick="location.href='allCustomers'" style="float: right;">All Customers List</button>
