@@ -18,6 +18,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired 
 	private CustomerDAO customerDAO;
 	
+	
 	 @Autowired
     private SessionFactory sessionFactory;
 
@@ -49,11 +50,16 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	@Transactional
-	public void saveCustomerWithCard(Customer theCustomer, CustomerCard customerCard) {
+	public void saveCustomerWithCard(Customer theCustomer) {
 		Session session = sessionFactory.getCurrentSession();
-		session.persist(theCustomer);
-		session.persist(theCustomer);
+		CustomerCard cCard = theCustomer.getCustomerCard();
+		System.out.println(cCard);
+		System.out.println(theCustomer);
+		session.saveOrUpdate(cCard);
+		session.saveOrUpdate(theCustomer);
 	}
+
+
 
 	
 }

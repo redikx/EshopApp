@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.redik.EshopApp.config.AppConfig;
 import org.redik.EshopApp.entity.Customer;
+import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
 import org.redik.EshopApp.entity.Product;
@@ -116,8 +117,23 @@ public class AppTest
 	@Test
 	@Transactional
 	//@Rollback(false)
-	public void deleteAllOrderEntries() {
-		orderService.deleteWholeOrder(17);
+	public void createNewCustomer() {
+		CustomerCard card = new CustomerCard("A00005");
+		Customer customer = new Customer("Piotr","Baltroczyk","klimatyzowany@gmail.com");
+		customer.setCustomerCard(card);
+		card.setCustomer(customer);
+		//Session session = sessionFactory.getCurrentSession();
+		customerService.saveCustomerWithCard(customer);
+		//session.persist(customer);
+		//session.persist(card);
+	}
+	
+	@Test
+	@Transactional
+	public void updateCustomer() {
+	Customer customer = customerService.getCustomer(11);
+	customer.setEmail("nwy@gmail.com");
+	customerService.saveCustomerWithCard(customer);
 	}
 	
 	

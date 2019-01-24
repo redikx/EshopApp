@@ -15,5 +15,6 @@ public interface CustomerService {
 
 	public void deleteCustomer(int id);
 
-	void saveCustomerWithCard(Customer theCustomer, CustomerCard customerCard);
+	void saveCustomerWithCard(Customer theCustomer);
+
 }

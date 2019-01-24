@@ -2,6 +2,7 @@ package org.redik.EshopApp.dao;
 
 import java.util.List;
 
+import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,6 @@ public interface CustomerCardDAO {
 	public void saveCustomerCard(CustomerCard customerCard);
 	
 	public void deleteCustomerCard(int id);
+
 	
 }
