@@ -5,6 +5,7 @@ import java.util.List;
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
+import org.redik.EshopApp.entity.Order_products;
 import org.redik.EshopApp.service.CustomerCardService;
 import org.redik.EshopApp.service.CustomerService;
 import org.redik.EshopApp.service.OrderService;
@@ -44,9 +45,9 @@ public class reportsControllers {
 	@RequestMapping("/formForUpdateCustomer")
 	public String updateCustomer(@RequestParam("customerId") int id, Model model) {
 		Customer customer = customerService.getCustomer(id);
-		model.addAttribute("customer",customer);
 		CustomerCard cCard = customer.getCustomerCard();
 		model.addAttribute("customerCard", cCard);
+		model.addAttribute("customer",customer);
 		return "editCustomerForm";
 	}
 	
@@ -60,7 +61,9 @@ public class reportsControllers {
 	@RequestMapping("/formForUpdateOrder")
 	public String updateOrder(@RequestParam("orderId") int id, Model model) {
 		Order order = orderService.getOrder(id);
+		List<Order_products> orderProducts = order.getOrderProducts();
 		model.addAttribute("order", order);
+		model.addAttribute("orderProducts",orderProducts);
 		return "editOrderForm";
 	}
 	
