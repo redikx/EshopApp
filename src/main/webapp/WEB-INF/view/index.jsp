@@ -23,18 +23,17 @@
 </table>
 
 <table>
+<tr>
 <form method="get" action="api/getCustomerOrders">
-
-    	<tr>
             <td><label for="customerId" >Customer ID : </label></td>
             <td><input type="text" id="customerId" name="customerId"/><br/></td>
-        </tr>
-        <tr>
             <td></td>
             <td><input type="submit" value="Submit"></td>
+       
+        </form>
         </tr>
     </table>
-
+<p></p>
 <table>
 <tr>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allCustomers'" value="Customer List" ></th>
@@ -45,8 +44,19 @@
 
 
 </table>
-</form>
 
+<table>
+<form method="get" action="getCustomerOrders">
+    	<tr>
+            <td><label for="customerId" >Orders of Customer ID : </label></td>
+            <td><input type="text" id="customerId" name="customerId"/><br/></td>
+            <td></td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    
+    
+</form>
+</table>
 
 </body>
 </html>

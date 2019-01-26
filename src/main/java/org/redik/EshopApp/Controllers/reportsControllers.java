@@ -11,13 +11,10 @@ import org.redik.EshopApp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Controller
 public class reportsControllers {
@@ -47,11 +44,24 @@ public class reportsControllers {
 	@RequestMapping("/formForUpdateCustomer")
 	public String updateCustomer(@RequestParam("customerId") int id, Model model) {
 		Customer customer = customerService.getCustomer(id);
-		//System.out.println(customer.toString());
 		model.addAttribute("customer",customer);
 		CustomerCard cCard = customer.getCustomerCard();
 		model.addAttribute("customerCard", cCard);
 		return "editCustomerForm";
+	}
+	
+	@RequestMapping("/getCustomerOrders")
+	public String getCustomerOrders(@RequestParam("customerId") int id, Model model) {
+		List<Order> orders = orderService.getAllOrderOfCustomer(id);
+		model.addAttribute("ordersOfCustomer", orders);
+		return "list-customer-order";
+	}
+	
+	@RequestMapping("/formForUpdateOrder")
+	public String updateOrder(@RequestParam("orderId") int id, Model model) {
+		Order order = orderService.getOrder(id);
+		model.addAttribute("order", order);
+		return "editOrderForm";
 	}
 	
 	@RequestMapping(value="/formForSaveCustomer")
