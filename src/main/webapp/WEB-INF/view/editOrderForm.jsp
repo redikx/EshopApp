@@ -12,7 +12,7 @@
 
 <form:form method="POST" action="formForSaveOrder" modelAttribute="order">
 	<table>
-
+<tr>
 	<td>OrderId</td>
 	<td> <form:input path="orderId"/> </td>
 	</tr>
@@ -35,7 +35,7 @@
 
 <form:form method="POST" action="formForSaveOrderProducts"  modelAttribute="order">
 <table>
-<tr> Products </tr>
+<tr> <td>Products </td></tr>
 	<tr>
 	<th>Product</th>
 	<th>Quantity</th>
@@ -55,4 +55,4 @@
          
 	</table>
 	</form:form>
-	
+	</html>

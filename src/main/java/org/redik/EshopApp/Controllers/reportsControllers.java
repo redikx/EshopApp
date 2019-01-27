@@ -42,6 +42,15 @@ public class reportsControllers {
 		return "RepAllOrders";
 	}
 	
+	
+	@RequestMapping("/getCustomerOrders")
+	public String getCustomerOrders(@RequestParam("customerId") int id, Model model) {
+		List<Order> orders = orderService.getAllOrderOfCustomer(id);
+		model.addAttribute("ordersOfCustomer", orders);
+		return "list-customer-order";
+	}
+	
+	
 	@RequestMapping("/formForUpdateCustomer")
 	public String updateCustomer(@RequestParam("customerId") int id, Model model) {
 		Customer customer = customerService.getCustomer(id);
@@ -51,29 +60,31 @@ public class reportsControllers {
 		return "editCustomerForm";
 	}
 	
-	@RequestMapping("/getCustomerOrders")
-	public String getCustomerOrders(@RequestParam("customerId") int id, Model model) {
-		List<Order> orders = orderService.getAllOrderOfCustomer(id);
-		model.addAttribute("ordersOfCustomer", orders);
-		return "list-customer-order";
+	@RequestMapping(value="/formForSaveCustomer")
+	public String saveCustomer(@ModelAttribute("customer") Customer customer,Model model) {
+	customerService.saveCustomerWithCard(customer);
+	List<Customer> lcust = customerService.getAllCustomer();
+	model.addAttribute("listCustomers", lcust);
+	return "RepAllCustomers";
 	}
 	
-	@RequestMapping("/formForUpdateOrder")
+	@RequestMapping(value="/formForUpdateOrder")
 	public String updateOrder(@RequestParam("orderId") int id, Model model) {
 		Order order = orderService.getOrder(id);
 		List<Order_products> orderProducts = order.getOrderProducts();
+		System.out.println(order.toString());
 		model.addAttribute("order", order);
 		model.addAttribute("orderProducts",orderProducts);
 		return "editOrderForm";
 	}
 	
-	@RequestMapping(value="/formForSaveCustomer")
-	public String saveCustomer(@ModelAttribute("customer") Customer customer,Model model) {
-	System.out.println(customer.toString());
-	customerService.saveCustomerWithCard(customer);
-	List<Customer> lcust = customerService.getAllCustomer();
-	model.addAttribute("listCustomers", lcust);
-	return "RepAllCustomers";
+	@RequestMapping(value="/formForSaveOrder")
+	public String saveOrder(@ModelAttribute("order") Order order,Model model) {
+	System.out.println("SAVING");
+	//orderService.saveOrder(order);
+	//List<Customer> lcust = customerService.getAllCustomer();
+	//model.addAttribute("listCustomers", lcust);
+	return "customer-details-form";
 	}
 	
 	@GetMapping("/formForDisplayCustomerDetails")
