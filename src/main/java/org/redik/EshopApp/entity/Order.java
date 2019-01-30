@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
@@ -26,6 +28,7 @@ public class Order {
 private int orderId;
 
 @Column(name="order_date")
+@DateTimeFormat(pattern = "dd/MM/yyyy")
 private Date orderDate;
 
 @Column(name="order_notes")

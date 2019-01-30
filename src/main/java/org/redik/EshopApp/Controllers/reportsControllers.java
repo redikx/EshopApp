@@ -1,7 +1,10 @@
 package org.redik.EshopApp.Controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.hibernate.boot.jaxb.hbm.spi.ResultSetMappingBindingDefinition;
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
@@ -10,11 +13,16 @@ import org.redik.EshopApp.service.CustomerCardService;
 import org.redik.EshopApp.service.CustomerService;
 import org.redik.EshopApp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -60,6 +68,16 @@ public class reportsControllers {
 		return "editCustomerForm";
 	}
 	
+	@RequestMapping(value="/formForUpdateOrder")
+	public String updateOrder(@RequestParam("orderId") int id,  Model model) {
+		Order order = orderService.getOrder(id);
+		List<Order_products> orderProducts = order.getOrderProducts();
+		model.addAttribute("o", order);
+		model.addAttribute("op",orderProducts);
+		System.out.println(orderProducts.toString());
+		return "editOrderForm";
+	}
+	
 	@RequestMapping(value="/formForSaveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") Customer customer,Model model) {
 	customerService.saveCustomerWithCard(customer);
@@ -68,23 +86,29 @@ public class reportsControllers {
 	return "RepAllCustomers";
 	}
 	
-	@RequestMapping(value="/formForUpdateOrder")
-	public String updateOrder(@RequestParam("orderId") int id, Model model) {
-		Order order = orderService.getOrder(id);
-		List<Order_products> orderProducts = order.getOrderProducts();
-		System.out.println(order.toString());
-		model.addAttribute("order", order);
-		model.addAttribute("orderProducts",orderProducts);
-		return "editOrderForm";
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
+	            dateFormat, false));
 	}
 	
-	@RequestMapping(value="/formForSaveOrder")
-	public String saveOrder(@ModelAttribute("order") Order order,Model model) {
+	@RequestMapping(value="/formForSaveOrder", method=RequestMethod.POST)
+	public String saveOrder(@ModelAttribute("order") Order order,Model model, BindingResult bindingResult) {
 	System.out.println("SAVING");
 	//orderService.saveOrder(order);
 	//List<Customer> lcust = customerService.getAllCustomer();
 	//model.addAttribute("listCustomers", lcust);
-	return "customer-details-form";
+	return "RepAllCustomers";
+	}
+	
+	@RequestMapping(value="/formForSaveOrderProducts", method=RequestMethod.POST)
+	public String saveOrder(@ModelAttribute("orderProducts") Order_products op,Model model, BindingResult bindingResult) {
+	System.out.println("SAVING PRODUCTS");
+	
+	//List<Customer> lcust = customerService.getAllCustomer();
+	//model.addAttribute("listCustomers", lcust);
+	return "RepAllCustomers";
 	}
 	
 	@GetMapping("/formForDisplayCustomerDetails")

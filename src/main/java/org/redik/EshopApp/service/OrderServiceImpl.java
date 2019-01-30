@@ -12,7 +12,6 @@ import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 
 @Service
 public class OrderServiceImpl implements OrderService {
