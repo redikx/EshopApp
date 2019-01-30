@@ -21,7 +21,7 @@
 	<tr>
 	<td>Order Date</td>
 	<td>
-	<form:input path="orderDate" value="${o.orderDate}"/> </td>
+	<form:input  path="orderDate" value="${o.orderDate}"/> </td>
 	</tr>
 	
 	<tr>

@@ -103,7 +103,7 @@ public class reportsControllers {
 	}
 	
 	@RequestMapping(value="/formForSaveOrderProducts", method=RequestMethod.POST)
-	public String saveOrder(@ModelAttribute("orderProducts") Order_products op,Model model, BindingResult bindingResult) {
+	public String saveOrder(@ModelAttribute("orderProducts") Order_products op,BindingResult bindingResult, Model model) {
 	System.out.println("SAVING PRODUCTS");
 	
 	//List<Customer> lcust = customerService.getAllCustomer();
