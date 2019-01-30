@@ -69,7 +69,7 @@ public class reportsControllers {
 	}
 	
 	@RequestMapping(value="/formForUpdateOrder")
-	public String updateOrder(@RequestParam("orderId") int id,  Model model) {
+	public String updateOrder(@RequestParam("orderId") int id, Model model) {
 		Order order = orderService.getOrder(id);
 		List<Order_products> orderProducts = order.getOrderProducts();
 		model.addAttribute("o", order);
@@ -94,7 +94,7 @@ public class reportsControllers {
 	}
 	
 	@RequestMapping(value="/formForSaveOrder", method=RequestMethod.POST)
-	public String saveOrder(@ModelAttribute("order") Order order,Model model, BindingResult bindingResult) {
+	public String saveOrder(@ModelAttribute("order") Order order,BindingResult result,Model model) {
 	System.out.println("SAVING");
 	//orderService.saveOrder(order);
 	//List<Customer> lcust = customerService.getAllCustomer();
