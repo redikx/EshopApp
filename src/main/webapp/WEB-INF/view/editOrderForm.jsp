@@ -13,24 +13,25 @@
 
 <form:form method="POST" action="formForSaveOrder" modelAttribute="o">
 	<table>
-<tr>
-	<td>OrderId</td>
-	<td> <form:input path="orderId"  value="${o.orderId}"/> </td>
-	</tr>
 
+	<tr><td><form:hidden  path="orderId" /> </td></tr>
+	<tr><td><form:hidden  path="customerId" /> </td></tr>
+
+<tr>
 	<tr>
 	<td>Order Date</td>
 	<td>
-	<form:input  path="orderDate" value="${o.orderDate}"/> </td>
+	<form:input  path="orderDate" /> </td>
 	</tr>
 	
 	<tr>
-	<td>Customer Id</td>
-	<td><form:input path="customerId" value="${o.customerId}"/> </td>
+	<td>Order Date</td>
+	<td>
+	<form:input  path="orderNotes" /> </td>
 	</tr>
-	<tr>   
+		<tr>   
           <td> </td>   
-          <td><input type="submit" value="Save Order" /></td>   
+          <td><input type="submit" value="Save" /></td>   
          </tr>
 </table>
 </form:form>

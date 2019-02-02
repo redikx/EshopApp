@@ -86,19 +86,12 @@ public class reportsControllers {
 	return "RepAllCustomers";
 	}
 	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
-	            dateFormat, false));
-	}
-	
 	@RequestMapping(value="/formForSaveOrder", method=RequestMethod.POST)
-	public String saveOrder(@ModelAttribute("order") Order order,BindingResult result,Model model) {
-	System.out.println("SAVING");
-	//orderService.saveOrder(order);
-	//List<Customer> lcust = customerService.getAllCustomer();
-	//model.addAttribute("listCustomers", lcust);
+	public String saveOrder(@ModelAttribute("o") Order order,BindingResult result,Model model) {
+	System.out.println("Order from Form : " + order.toString());
+	orderService.saveOrder(order);
+	List<Customer> lcust = customerService.getAllCustomer();
+	model.addAttribute("listCustomers", lcust);
 	return "RepAllCustomers";
 	}
 	
@@ -109,6 +102,13 @@ public class reportsControllers {
 	//List<Customer> lcust = customerService.getAllCustomer();
 	//model.addAttribute("listCustomers", lcust);
 	return "RepAllCustomers";
+	}
+	
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    binder.registerCustomEditor(Date.class, new CustomDateEditor(
+	            dateFormat, false));
 	}
 	
 	@GetMapping("/formForDisplayCustomerDetails")

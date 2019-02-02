@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.redik.EshopApp.dao.OrderDAO;
 import org.redik.EshopApp.dao.Order_productsDAO;
+import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,14 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	@Transactional
 	public void saveOrder(Order order) {
+		Session session = sessionFactory.getCurrentSession();
+		List<Order_products> op = order.getOrderProducts();
+		System.out.println("Saving : " + order.toString());
+		//System.out.println(op.toString());
+		//session.saveOrUpdate(op);
+		session.saveOrUpdate(order);
+	
+		
 		orderDAO.saveOrder(order);
 	}
 
