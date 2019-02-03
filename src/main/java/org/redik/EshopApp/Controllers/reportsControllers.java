@@ -74,7 +74,6 @@ public class reportsControllers {
 		List<Order_products> orderProducts = order.getOrderProducts();
 		model.addAttribute("o", order);
 		model.addAttribute("op",orderProducts);
-		System.out.println(orderProducts.toString());
 		return "editOrderForm";
 	}
 	
@@ -90,9 +89,9 @@ public class reportsControllers {
 	public String saveOrder(@ModelAttribute("o") Order order,BindingResult result,Model model) {
 	System.out.println("Order from Form : " + order.toString());
 	orderService.saveOrder(order);
-	List<Customer> lcust = customerService.getAllCustomer();
-	model.addAttribute("listCustomers", lcust);
-	return "RepAllCustomers";
+	List<Order> orders = orderService.getAllOrder();
+	model.addAttribute("orders", orders);
+	return "RepAllOrders";
 	}
 	
 	@RequestMapping(value="/formForSaveOrderProducts", method=RequestMethod.POST)

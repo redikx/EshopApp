@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
     
 <!DOCTYPE html>
 <html>
@@ -12,4 +14,28 @@
 </head>
 <body>
 
-HERE WILL BE LIST OF ALL ORDERS
+<table>
+<tr>
+<th>Id</th>
+<th>Date</th>
+<th>Notes</th>
+<th>CustomerId</th>
+<th></th>
+</tr>
+
+<c:forEach var="order"  items="${orders}">
+
+	<c:url value="formForUpdateOrder" var="UpdateOrderLink" >
+		<c:param name="orderId" value="${order.orderId}"></c:param>
+	</c:url>
+	
+<tr>
+<td><a href="${UpdateOrderLink}"> ${order.orderId} </a></td>
+<td> <fmt:formatDate pattern="yyyy-MM-dd" value = "${order.orderDate}" /> </td>
+<td> ${order.orderNotes}</td>
+<td> ${order.customerId}</td>
+</tr>
+
+</c:forEach>
+
+</table>
