@@ -48,13 +48,15 @@
 			<th>Product</th>
 			<th>Quantity</th>
 		</tr>
-		<c:forEach var="op" items="${o.orderProducts}">
-			<tr>
-				<td><form:input path="${order.orderId}" value="${op.order.orderId}" /></td>
-				<td><form:input path="${op.order.orderId}" /></td>
-				<td><form:input path="${op.product.productName}" /></td>
-				<td><form:input path="${op.quantity}" /></td>
-			</tr>
+		
+
+		
+			<c:forEach var="op" items="${op}">
+	<tr>
+<td><input value="${op.product.productName}" /></td>
+<td><input value="${op.quantity}" /></td>
+<td> <input value=${op.product.manufacturer.manName } /></td>
+</tr>
 			<tr>
 				<td>
 				<td></td>
