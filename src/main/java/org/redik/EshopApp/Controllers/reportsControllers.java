@@ -1,10 +1,11 @@
 package org.redik.EshopApp.Controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.hibernate.boot.jaxb.hbm.spi.ResultSetMappingBindingDefinition;
+import org.redik.EshopApp.dao.Order_productsDAOImpl;
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
@@ -95,12 +96,9 @@ public class reportsControllers {
 	}
 	
 	@RequestMapping(value="/formForSaveOrderProducts", method=RequestMethod.POST)
-	public String saveOrder(@ModelAttribute("orderProducts") Order_products op,BindingResult bindingResult, Model model) {
-	System.out.println("SAVING PRODUCTS");
-	
-	//List<Customer> lcust = customerService.getAllCustomer();
-	//model.addAttribute("listCustomers", lcust);
-	return "RepAllCustomers";
+	public String saveOrder(@ModelAttribute("op") ArrayList<Order_products> op,BindingResult result,Model model) {
+		System.out.println(op.toString());
+	return "RepAllOrders";
 	}
 	
 	@InitBinder
