@@ -43,7 +43,7 @@
 	modelAttribute="op">
 	<table>
 		<tr>
-			<th>Product</th>
+			<th>Product Name</th>
 			<th>Quantity</th>
 			<th>Producent</th>
 		</tr>
@@ -51,7 +51,7 @@
 		
 			<c:forEach var="op" items="${op}">
 	<tr>
-<td>${op.product.productId } </td>
+<td>${op.product.productName } </td>
 <td>${op.quantity }</td>
 <td>${op.product.manufacturer.getManName() }</td>
 <td> 
