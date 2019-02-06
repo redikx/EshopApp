@@ -97,6 +97,7 @@ public class reportsControllers {
 	
 	@RequestMapping(value="/formForSaveOrderProducts", method=RequestMethod.POST)
 	public String saveOrder(@ModelAttribute("op") ArrayList<Order_products> op,BindingResult result,Model model) {
+		System.out.println(op.size());
 		System.out.println(op.toString());
 	return "RepAllOrders";
 	}

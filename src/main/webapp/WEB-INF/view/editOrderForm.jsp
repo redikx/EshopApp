@@ -43,19 +43,18 @@
 	modelAttribute="op">
 	<table>
 		<tr>
-			<th>OP ID</th>
-			<th>OrderId</th>
 			<th>Product</th>
 			<th>Quantity</th>
+			<th>Producent</th>
 		</tr>
 		
-
 		
 			<c:forEach var="op" items="${op}">
 	<tr>
-<td><input value="${op.product.productName}" /></td>
-<td><input value="${op.quantity}" /></td>
-<td> <input value=${op.product.manufacturer.manName } /></td>
+<td>${op.product.productId } </td>
+<td>${op.quantity }</td>
+<td>${op.product.manufacturer.getManName() }</td>
+<td> 
 </tr>
 			<tr>
 				<td>
