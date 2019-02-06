@@ -48,9 +48,20 @@ public class reportsControllers {
 	
 	@GetMapping("/allOrders") 
 	public String RepAllOrders( Model model) {
+		List<Order> allOrders = orderService.getAllOrder();
+		model.addAttribute("allOrders", allOrders);
 		return "RepAllOrders";
 	}
 	
+	@GetMapping("/newOrder")
+	public String newEntryOrder(Model model) {
+		return "new-Order-Entry";
+	}
+
+	@GetMapping("/newCustomer")
+	public String newCustomerOrder(Model model) {
+		return "new-Customer-Entry";
+	}
 	
 	@RequestMapping("/getCustomerOrders")
 	public String getCustomerOrders(@RequestParam("customerId") int id, Model model) {
@@ -97,8 +108,8 @@ public class reportsControllers {
 	
 	@RequestMapping(value="/formForSaveOrderProducts", method=RequestMethod.POST)
 	public String saveOrder(@ModelAttribute("op") ArrayList<Order_products> op,BindingResult result,Model model) {
-		System.out.println(op.size());
-		System.out.println(op.toString());
+		List<Order> allOrders = orderService.getAllOrder();
+		model.addAttribute("allOrders", allOrders);
 	return "RepAllOrders";
 	}
 	

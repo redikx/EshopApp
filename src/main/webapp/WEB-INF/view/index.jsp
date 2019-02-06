@@ -20,25 +20,30 @@
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/api/getCustomer?customerId=11'" value="RestApi getCustomer?customerId=11" style="width: 350px; "></th>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/api/getCustomerOrders?customerId=11'" value="RestApi getCustomersOrder?customerId=11" style="width: 350px; "></th>
 </tr>
-</table>
-
-<table>
 <tr>
-<form method="get" action="api/getCustomerOrders">
+<th><form method="get" action="api/getCustomerOrders">
             <td><label for="customerId" >Customer ID : </label></td>
             <td><input type="text" id="customerId" name="customerId"/><br/></td>
             <td></td>
             <td><input type="submit" value="Submit"></td>
        
         </form>
-        </tr>
+    </th>    </tr>
+
+</table>
+
+<table>
+<h2> Web Interfaces : </h2>
     </table>
 <p></p>
 <table>
 <tr>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allCustomers'" value="Customer List" ></th>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allOrders'" value="Orders List" > </th>
-<th></th>
+</tr>
+<tr>
+<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/newCustomer'" value="New Customer" > </th>
+<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/newOrder'" value="New Order" > </th>
 <th></th>
 </tr>
 

@@ -23,7 +23,7 @@
 <th></th>
 </tr>
 
-<c:forEach var="order"  items="${orders}">
+<c:forEach var="order"  items="${allOrders}">
 
 	<c:url value="formForUpdateOrder" var="UpdateOrderLink" >
 		<c:param name="orderId" value="${order.orderId}"></c:param>

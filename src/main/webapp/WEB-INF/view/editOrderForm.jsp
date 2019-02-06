@@ -62,7 +62,7 @@
 		</c:forEach>
 		<tr>
 			<td></td>
-			<td><input type="submit" value="Save" /></td>
+			<td><input type="submit" value="Main Page" /></td>
 		</tr>
 
 	</table>
