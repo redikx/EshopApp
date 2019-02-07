@@ -61,7 +61,25 @@ public class CustomerServiceImpl implements CustomerService{
 		session.saveOrUpdate(theCustomer);
 	}
 
+	@Override
+	@Transactional
+	public void saveCustomerWithCard2(Customer theCustomer) {
+		Session session = sessionFactory.getCurrentSession();
+		session.persist(theCustomer);
+		String convertedId = Integer.toString(theCustomer.getId());
+		int sizeId = convertedId.length();
 
-
+		String cardString = "A";
+		for (int i=1;i<6-sizeId;i++) {
+			cardString=cardString+"0";
+		}
+		cardString = cardString + convertedId;
+		CustomerCard custCard = new CustomerCard(cardString);
+		theCustomer.setCustomerCard(custCard);
+		custCard.setCustomer(theCustomer);
+		session.saveOrUpdate(custCard);
+		session.saveOrUpdate(theCustomer);
+	}
+	
 	
 }

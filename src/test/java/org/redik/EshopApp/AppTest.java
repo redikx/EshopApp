@@ -130,6 +130,22 @@ public class AppTest
 	
 	@Test
 	@Transactional
+	public void createNewCustomer2() {
+		Session session = sessionFactory.getCurrentSession();
+		Customer customer = new Customer("AAA","BBB","yzowany@gmail.com");
+		System.out.println("Customer : " + customer.toString());
+		session.persist(customer);
+		customerService.saveCustomerWithCard2(customer);
+		//card.setCustomer(customer);
+		//Session session = sessionFactory.getCurrentSession();
+		//customerService.saveCustomerWithCard(customer);
+		//session.persist(customer);
+		//session.persist(card);
+	}
+	
+	
+	@Test
+	@Transactional
 	public void updateCustomer() {
 	Customer customer = customerService.getCustomer(11);
 	customer.setEmail("nwy@gmail.com");

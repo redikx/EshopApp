@@ -14,9 +14,9 @@
 
 <h2> Enter new Customer </h2>
 
-<form action="newCustomerSave" method="POST" >
+<form:form action="newCustomerSave" method="POST" modelAttribute="newCust">
 <label>First Name</label> <input type="text" name="firstName"/><br/></br>
 <label>Last Name</label> <input type="text" name="lastName"/><br/></br>
 <label>Email     </label><input type="text" name="email"/><br/></br>
 <input type="submit" value="register"/>  
-</form>
+</form:form>

@@ -17,4 +17,6 @@ public interface CustomerService {
 
 	void saveCustomerWithCard(Customer theCustomer);
 
+	void saveCustomerWithCard2(Customer theCustomer);
+
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
@@ -63,9 +65,9 @@ public class reportsControllers {
 	}
 	
 	@RequestMapping("/newCustomerSave")
-	public String saveNewCustomer() {
-		System.out.println("NEW CUSTOMER");
-		return "added";
+	public String saveNewCustomer(@ModelAttribute("newCust") Customer newcust,BindingResult result, Model model) {
+		customerService.saveCustomerWithCard2(newcust);
+		return "new-Customer-Entry";
 	}
 	
 	@RequestMapping("/getCustomerOrders")
