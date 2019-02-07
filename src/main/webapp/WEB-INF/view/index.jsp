@@ -13,38 +13,38 @@
 <body>
 
 <h2> Api Links : </h2>
-<table>
 
-<tr>
-<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/api/allCustomers'" value="RestApi AllCustomers" style="color: #000000"></th>
-<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/api/getCustomer?customerId=11'" value="RestApi getCustomer?customerId=11" style="width: 350px; "></th>
-<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/api/getCustomerOrders?customerId=11'" value="RestApi getCustomersOrder?customerId=11" style="width: 350px; "></th>
+<a  href="${pageContext.request.contextPath}/api/allCustomers"> All Customers Api</a><p>
+<a  href="${pageContext.request.contextPath}/api/getCustomer?customerId=11"> Customer 11 details</a><p>
+<a  href="${pageContext.request.contextPath}/api/getCustomerOrders?customerId=11"> Orders o	f Customer 11</a>
 </tr>
 <tr>
 <th><form method="get" action="api/getCustomerOrders">
-            <td><label for="customerId" >Customer ID : </label></td>
-            <td><input type="text" id="customerId" name="customerId"/><br/></td>
-            <td></td>
+            <td><label for="customerId" >Orders of Customer ID : </label></td>
+            <td><input type="text" id="customerId" name="customerId"/></td>
             <td><input type="submit" value="Submit"></td>
        
         </form>
     </th>    </tr>
 
-</table>
 
 <table>
 <h2> Web Interfaces : </h2>
     </table>
 <p></p>
-<table>
+<table style="background-color: Gray; color: Gray">
 <tr>
-<th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allCustomers'" value="Customer List" ></th>
+<th style="color: Gray; "><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allCustomers'" value="Customer List" ></th>
+</tr>
+<tr>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/allOrders'" value="Orders List" > </th>
 </tr>
 <tr>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/newCustomer'" value="New Customer" > </th>
+</tr>
+<tr>
 <th><input type="button" onclick="window.location.href='${pageContext.request.contextPath}/newOrder'" value="New Order" > </th>
-<th></th>
+
 </tr>
 
 

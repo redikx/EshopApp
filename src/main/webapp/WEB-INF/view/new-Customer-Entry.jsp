@@ -8,8 +8,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Main Page</title>
-<link type="text/css" href="<c:url value='/resources/css/style.css' />" rel="stylesheet" />
+<link type="text/css" href="<c:url value='/resources/css/add-customer-form.css' />" rel="stylesheet" />
 </head>
 <body>
 
-<h2> Enter new Order </h2>
+<h2> Enter new Customer </h2>
+
+<form action="newCustomerSave" method="POST" >
+<label>First Name</label> <input type="text" name="firstName"/><br/></br>
+<label>Last Name</label> <input type="text" name="lastName"/><br/></br>
+<label>Email     </label><input type="text" name="email"/><br/></br>
+<input type="submit" value="register"/>  
+</form>

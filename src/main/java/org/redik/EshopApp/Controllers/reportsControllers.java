@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.redik.EshopApp.dao.Order_productsDAOImpl;
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
@@ -61,6 +60,12 @@ public class reportsControllers {
 	@GetMapping("/newCustomer")
 	public String newCustomerOrder(Model model) {
 		return "new-Customer-Entry";
+	}
+	
+	@RequestMapping("/newCustomerSave")
+	public String saveNewCustomer() {
+		System.out.println("NEW CUSTOMER");
+		return "added";
 	}
 	
 	@RequestMapping("/getCustomerOrders")
