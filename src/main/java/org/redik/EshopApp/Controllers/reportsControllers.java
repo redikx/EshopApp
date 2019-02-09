@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.entity.Order;
@@ -75,6 +73,13 @@ public class reportsControllers {
 		List<Order> orders = orderService.getAllOrderOfCustomer(id);
 		model.addAttribute("ordersOfCustomer", orders);
 		return "list-customer-order";
+	}
+	
+	@RequestMapping("/formForDeleteOrder")
+	public String deleteOrder(@RequestParam("orderId") int id, Model model) {
+		Order order = orderService.getOrder(id);
+		model.addAttribute("order", order);
+		return "delete-order-form";
 	}
 	
 	

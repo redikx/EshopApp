@@ -8,13 +8,9 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.redik.EshopApp.entity.Customer;
 import org.redik.EshopApp.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.media.jfxmedia.logging.Logger;
 
 @Repository
 public class OrderDAOImpl implements OrderDAO {

@@ -3,7 +3,6 @@ package org.redik.EshopApp.service;
 import java.util.List;
 
 import org.redik.EshopApp.entity.Customer;
-import org.redik.EshopApp.entity.CustomerCard;
 
 public interface CustomerService {
 

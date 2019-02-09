@@ -3,8 +3,6 @@ package org.redik.EshopApp.dao;
 import java.util.List;
 
 import org.redik.EshopApp.entity.Customer;
-import org.redik.EshopApp.entity.CustomerCard;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 

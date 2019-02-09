@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.redik.EshopApp.config.AppConfig;
 import org.redik.EshopApp.entity.Customer;
-import org.redik.EshopApp.entity.CustomerCard;
 import org.redik.EshopApp.service.CustomerCardService;
 import org.redik.EshopApp.service.CustomerService;
 import org.redik.EshopApp.service.OrderService;

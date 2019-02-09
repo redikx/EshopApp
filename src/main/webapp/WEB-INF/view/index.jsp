@@ -17,20 +17,19 @@
 <a  href="${pageContext.request.contextPath}/api/allCustomers"> All Customers Api</a><p>
 <a  href="${pageContext.request.contextPath}/api/getCustomer?customerId=11"> Customer 11 details</a><p>
 <a  href="${pageContext.request.contextPath}/api/getCustomerOrders?customerId=11"> Orders o	f Customer 11</a>
-</tr>
-<tr>
-<th><form method="get" action="api/getCustomerOrders">
-            <td><label for="customerId" >Orders of Customer ID : </label></td>
-            <td><input type="text" id="customerId" name="customerId"/></td>
-            <td><input type="submit" value="Submit"></td>
+
+
+<form method="get" action="api/getCustomerOrders">
+            <label for="customerId" >Orders of Customer ID : </label>
+            <input type="text" id="customerId" name="customerId"/>
+            <input type="submit" value="Submit">
        
         </form>
-    </th>    </tr>
+    
 
 
-<table>
+
 <h2> Web Interfaces : </h2>
-    </table>
 <p></p>
 <table style="background-color: Gray; color: Gray">
 <tr>
@@ -50,18 +49,18 @@
 
 </table>
 
-<table>
+
+
 <form method="get" action="getCustomerOrders">
-    	<tr>
-            <td><label for="customerId" >Orders of Customer ID : </label></td>
-            <td><input type="text" id="customerId" name="customerId"/><br/></td>
-            <td></td>
-            <td><input type="submit" value="Submit"></td>
-        </tr>
+    	
+            <label for="customerId" >Orders of Customer ID : </label>
+           <input type="text" id="customerId" name="customerId"/><br/>
+           
+            <input type="submit" value="Submit">
+        
     
     
 </form>
-</table>
 
 </body>
 </html>

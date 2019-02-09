@@ -29,11 +29,16 @@
 		<c:param name="orderId" value="${order.orderId}"></c:param>
 	</c:url>
 	
+	<c:url value="formForDeleteOrder" var="DeleteOrderLink" >
+		<c:param name="orderId" value="${order.orderId}"> </c:param>
+		</c:url> 
+	
 <tr>
 <td><a href="${UpdateOrderLink}"> ${order.orderId} </a></td>
 <td> <fmt:formatDate pattern="yyyy-MM-dd" value = "${order.orderDate}" /> </td>
 <td> ${order.orderNotes}</td>
 <td> ${order.customerId}</td>
+<td> <a href="${DeleteOrderLink}">Delete Order</a>
 </tr>
 
 </c:forEach>

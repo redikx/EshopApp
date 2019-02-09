@@ -26,7 +26,7 @@
 	</c:url>
 	
 <tr>
-<td><a href="${UpdateOrderLink}"> ${order.orderId} </td>
+<td><a href="${UpdateOrderLink}"> ${order.orderId} </a></td>
 <td> ${order.customerId} </td>
 <td> ${order.orderDate} </td>
 <td> ${order.orderNotes} </td>

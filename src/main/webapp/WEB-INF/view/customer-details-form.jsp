@@ -31,7 +31,7 @@
 	</tr>
 </table>
 <p></p>
-	<table style="font-style: normal; font-size: small;;" bgcolor="#F5F5F5" background="#F5F5F5">
+	<table style="font-style: normal; font-size: small;;"  >
 	
 	<c:forEach var="orders" items="${listCustomerOrders}">
 	<tr>

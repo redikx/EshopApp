@@ -11,7 +11,7 @@
 	<h3>Update Product</h3>
 	<s:form method="post" 
 		action="${pageContext.request.contextPath }/formForUpdateCustomer">
-		<table border="0" cellpadding="2" cellspacing="2">
+		<table  >
 			<tr>
 				<td>Id</td>
 				<td>

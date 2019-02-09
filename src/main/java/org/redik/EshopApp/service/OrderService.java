@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.redik.EshopApp.entity.Order;
 import org.redik.EshopApp.entity.Order_products;
-import org.redik.EshopApp.entity.Product;
 
 public interface OrderService {
 

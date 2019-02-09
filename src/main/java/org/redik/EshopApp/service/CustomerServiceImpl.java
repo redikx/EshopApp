@@ -12,8 +12,6 @@ import org.redik.EshopApp.entity.CustomerCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Service
 public class CustomerServiceImpl implements CustomerService{
 
