@@ -24,6 +24,42 @@ tr {
 }
  
  
+ 
+ .table_det  {   
+	border-collapse:collapse;
+	border-bottom:1px solid gray;
+	font-family: Tahoma,Verdana,Segoe,sans-serif;
+	width:72%;
+}
+
+.table_det th {
+	border-bottom:0px solid gray;
+	background:none repeat scroll 0 0 #ff9900;
+	padding:10px;
+	color: #ffffff;
+	line-height: 10px;}
+
+.table_det 	tr {
+	border-top:0px solid gray;
+	text-align:center;
+	line-height: 13px;	
+}
+
+
+tr.order_product_lists td {
+	border-bottom:0px solid gray;
+	background:none repeat scroll 0 0 #c0c0c0;
+	padding:10px;
+	color: #000000;
+	line-height: 10px;
+	border-bottom-width: 5px;}
+	
+.blank_row
+{
+    height: 10px !important; /* overwrites any other rules */
+    background-color: #FFFFFF;
+}
+ 
 #wrapper {width: 100%; margin-top: 0px; }
 #header {width: 70%; background: #0000a0; margin-top: 0px; padding:15px 0px 15px 15px;}
 #header h2 {width: 100%; margin:auto; color: #FFFFFF;}

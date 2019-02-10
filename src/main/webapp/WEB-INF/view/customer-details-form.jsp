@@ -31,11 +31,14 @@
 	</tr>
 </table>
 <p></p>
-	<table style="font-style: normal; font-size: small;;"  >
+
+
+	
 	
 	<c:forEach var="orders" items="${listCustomerOrders}">
+	<table class="table_det">
 	<tr>
-	<th background="#FF7F50"> Order Id </th>
+	<th> Order Id </th>
 	<th>   Order Date   </th>
 	<th>        Order Notes         </th>
 	<th></th>
@@ -45,13 +48,13 @@
 	<td> ${orders.getOrderId() } </td>
 	<td> ${orders.getOrderDate() } </td>
 <td> ${orders.getOrderNotes()} </td>
-			<tr>
-			<th> Product Name </th>
-			<th> Quantity </th>
+			<tr class="order_product_lists">
+			<td> Product Name </td>
+			<td> Quantity </td>
 			</tr>
-			<c:forEach var="products" items="${orders.getOrderProducts()}" >
 			
-			<tr 	>
+			<c:forEach var="products" items="${orders.getOrderProducts()}" >
+			<tr>
 			<td>
 		${products.getProduct().getProductName()}
 			</td>
@@ -60,8 +63,12 @@
 			</td>
 			</tr>
 			</c:forEach>
+		<tr class="blank_row">
+    	<td colspan="3"></td>
+		</tr>
+			</table>
 	</c:forEach>
-	</table>
+	
 	
 	<button type="button" name="back" onclick="history.back()">back</button>
 	<button type="button" name="back" onclick="location.href='allCustomers'" style="float: right;">All Customers List</button>
