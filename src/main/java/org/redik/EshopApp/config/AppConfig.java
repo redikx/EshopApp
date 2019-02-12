@@ -121,20 +121,15 @@ public class AppConfig implements WebMvcConfigurer {
 				.setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
 	}
 	
+	
 	@Bean
 	public DataSource secure_dataSource() {
-
-		// create connection pool
 		ComboPooledDataSource myDataSource = new ComboPooledDataSource();
-
-		// set jdbc driver
 		try {
 			myDataSource.setDriverClass(env.getProperty("secure.jdbc.driver"));
 		} catch (PropertyVetoException exc) {
 			throw new RuntimeException(exc);
 		}
-
-		// set jdbc props
 		myDataSource.setJdbcUrl(env.getProperty("secure.jdbc.url"));
 		myDataSource.setUser(env.getProperty("secure.jdbc.user"));
 		myDataSource.setPassword(env.getProperty("secure.jdbc.password"));
